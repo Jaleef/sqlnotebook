@@ -11,9 +11,9 @@
                 </div>
             </div>
 
-            <!-- 下边是代码区 -->
+            <!-- 下边是代码区, 使用monaco-editor组件 -->
             <div class="code">
-                <textarea name="" id=""></textarea>
+                
             </div>
         </div>
 
@@ -26,6 +26,7 @@
 
 <script lang="ts" setup>
     import { ref } from 'vue';
+
     let order = ref(1);
     let isRunning = ref(false);
 
