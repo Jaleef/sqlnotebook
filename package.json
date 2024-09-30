@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "monaco-editor": "^0.52.0",
     "vue": "^3.4.37"
   },
   "devDependencies": {
