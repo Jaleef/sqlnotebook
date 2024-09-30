@@ -6,7 +6,6 @@
 </template>
 
 <script lang="ts" setup> 
-  import { ref } from 'vue'
   import CodeBox from './components/CodeBox.vue'
 
 </script>
