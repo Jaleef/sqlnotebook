@@ -1,18 +1,25 @@
 <template>
     <div class="outer">
-        <!-- 下边是侧边栏的代码, 包括一个运行图标和运行顺序 -->
-        <div class="sidebar">
-            <div>
-                <img v-if="!isRunning" src="../../public/run.png" alt="">
-                <img v-else src="../../public/running.png" alt="">
+        <div class="mainContent">
+            <!-- 下边是侧边栏的代码, 包括一个运行图标和运行顺序 -->
+            <div class="sidebar">
+                <div>
+                    <img v-if="!isRunning" src="../../public/run.png" alt="">
+                    <img v-else src="../../public/running.png" alt="">
 
-                <div>[{{ order }}]</div>
+                    <div style="margin-bottom: 10px;">[{{ order }}]</div>
+                </div>
+            </div>
+
+            <!-- 下边是代码区 -->
+            <div class="code">
+                <textarea name="" id=""></textarea>
             </div>
         </div>
 
-        <!--  -->
-        <div class="">
-
+        <!-- 下面是输出区 -->
+        <div class="output">
+            result
         </div>
     </div>
 </template>
@@ -33,18 +40,46 @@
 <style scoped>
     .outer {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
 
         border: 1px solid black;
         border-radius: 2px;
+        
+    }
 
-        height: 80px;
+    .mainContent {
+        display: flex;
+        flex-direction: row;
+
+        min-height: 80px;
+        width: 100%;
+
+        border: 0.5px solid red;
     }
 
     .sidebar {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: flex-start;
     }
 
+    .code {
+        border: 0.5px solid gainsboro;
+        
+        margin-top: 5px;
+        margin-left: 20px;
+        margin-bottom: 10px;
+        margin-right: 2px;
+
+        width: 100%;
+    }
+    .code textarea {
+        width: 100%;
+        border: none;
+        outline: none;
+    }
+
+    .output {
+        margin-left: 50px;
+    }
 </style>
