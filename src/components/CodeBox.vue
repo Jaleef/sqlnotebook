@@ -13,7 +13,6 @@
 
             <!-- 下边是代码区, 使用monaco-editor组件 -->
             <div class="code">
-                <MonacoEditor />
             </div>
 
             
@@ -30,7 +29,6 @@
 
 <script lang="ts" setup>
     import { ref } from 'vue';
-    import MonacoEditor from "./MonacoEditor.vue";    
 
     let order = ref(1);
     let isRunning = ref(false);
@@ -41,7 +39,6 @@
     export default {
         name: "CodeBox",
         components: {
-            MonacoEditor,
         }
     }
 </script>
