@@ -4,7 +4,7 @@
             <!-- 下边是侧边栏的代码, 包括一个运行图标和运行顺序 -->
             <div class="sidebar">
                 <div>
-                    <img v-if="!isRunning" src="../../public/run.png" alt="">
+                    <img v-if="!isRunning" src="../../public/run.png" alt="" @click="submit">
                     <img v-else src="../../public/running.png" alt="">
 
                     <div style="margin-bottom: 10px;">[{{ order }}]</div>
@@ -13,6 +13,7 @@
 
             <!-- 下边是代码区, 使用monaco-editor组件 -->
             <div class="code">
+                <div id="editor"></div>
             </div>
 
             
@@ -28,10 +29,30 @@
 </template>
 
 <script lang="ts" setup>
-    import { ref } from 'vue';
+    import { ref, onMounted } from 'vue';
+    import Quill from 'quill';
+    import 'quill/dist/quill.snow.css';
 
     let order = ref(1);
     let isRunning = ref(false);
+
+    let quillOptions = {
+        theme: 'snow',
+        modules: {
+            toolbar: false,
+        }
+    }
+
+    onMounted(() => {
+        const quill = new Quill("#editor", quillOptions)
+    })
+    
+    function submit() {
+        isRunning.value = true;
+        setTimeout(() => {
+            isRunning.value = false;
+        }, 2000)
+    }
 
 </script>
 
@@ -67,6 +88,7 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+        width: 20px;
     }
 
     .code {
