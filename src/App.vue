@@ -1,13 +1,25 @@
 <template>
   <div class="container">
     <h1>Hello Vue 3 + TypeScript + Vite</h1>
-    <CodeBox />
+    <div v-for="(code, index) in codeBoxList" :key="index">
+      <CodeBox :addCode="addCode" :addMarkdown="addMarkdown"/>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup> 
   import CodeBox from './components/CodeBox.vue'
+  import { ref } from 'vue'
 
+  let codeBoxList = ref([{}])
+  function addCode() {
+    console.log('add code');
+    codeBoxList.value.push({});
+  }
+
+  function addMarkdown() {
+    console.log('add markdown')
+  }
 </script>
 
 <script lang="ts">

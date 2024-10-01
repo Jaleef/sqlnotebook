@@ -20,8 +20,14 @@
         </div>
 
         <!-- 下面是输出区 -->
-        <div class="output">
+        <div id="output">
             result
+        </div>
+
+        <!-- 下面是空白区 -->
+        <div class="blank">
+            <div class="addBtn" @click="addCode">+ 代码</div>
+            <div class="addBtn" @click="addMarkdown">+ markdown</div>
         </div>
     </div>
     
@@ -33,10 +39,12 @@
     import Quill from 'quill';
     import 'quill/dist/quill.snow.css';
 
+    defineProps(['addCode', 'addMarkdown']);
+
     let order = ref(1);
     let isRunning = ref(false);
 
-    let quillOptions = {
+    const quillOptions = {
         theme: 'snow',
         modules: {
             toolbar: false,
@@ -102,7 +110,25 @@
         width: 100%;
     }
 
-    .output {
+    #output {
         margin-left: 50px;
+    }
+
+    .blank {
+        height: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 5px;
+    }
+
+    .blank:hover .addBtn {
+        display: flex;
+        border: 1px solid black;
+        margin-right: 10px;
+    }
+
+    .addBtn {
+        display: none;
     }
 </style>
