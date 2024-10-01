@@ -13,8 +13,10 @@
 
             <!-- 下边是代码区, 使用monaco-editor组件 -->
             <div class="code">
-                
+                <MonacoEditor />
             </div>
+
+            
         </div>
 
         <!-- 下面是输出区 -->
@@ -22,10 +24,13 @@
             result
         </div>
     </div>
+    
+    
 </template>
 
 <script lang="ts" setup>
     import { ref } from 'vue';
+    import MonacoEditor from "./MonacoEditor.vue";    
 
     let order = ref(1);
     let isRunning = ref(false);
@@ -35,6 +40,9 @@
 <script lang="ts">
     export default {
         name: "CodeBox",
+        components: {
+            MonacoEditor,
+        }
     }
 </script>
 
@@ -73,11 +81,6 @@
         margin-right: 2px;
 
         width: 100%;
-    }
-    .code textarea {
-        width: 100%;
-        border: none;
-        outline: none;
     }
 
     .output {
