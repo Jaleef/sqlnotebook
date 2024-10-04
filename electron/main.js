@@ -1,6 +1,6 @@
 // const { app, BrowserWindow } = require('electron');
 import { app, BrowserWindow } from 'electron';
-
+import { path } from 'path';
 // 创建一个窗口
 const createWindow = () => {
     // 一个window对象
