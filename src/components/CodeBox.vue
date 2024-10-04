@@ -1,5 +1,14 @@
 <template>
     <div class="outer">
+        <div>
+            {{ editorId }}
+        </div>
+        <!-- 下面是空白区 -->
+        <div class="blank">
+            <div class="addBtn" @click="addCode">+ 代码</div>
+            <div class="addBtn" @click="addMarkdown">+ markdown</div>
+        </div>
+        
         <div class="mainContent">
             <!-- 下边是侧边栏的代码, 包括一个运行图标和运行顺序 -->
             <div class="sidebar">
@@ -13,7 +22,7 @@
 
             <!-- 下边是代码区, 使用monaco-editor组件 -->
             <div class="code">
-                <div id="editor"></div>
+                <div :id=editorId></div>
             </div>
 
             
@@ -39,7 +48,7 @@
     import Quill from 'quill';
     import 'quill/dist/quill.snow.css';
 
-    defineProps(['addCode', 'addMarkdown']);
+    const props = defineProps(['editorId', 'addCode', 'addMarkdown']);
 
     let order = ref(1);
     let isRunning = ref(false);
@@ -51,8 +60,13 @@
         }
     }
 
+    console.log("#"+props.editorId);
+
+    console.log(typeof props.editorId);
     onMounted(() => {
-        const quill = new Quill("#editor", quillOptions)
+        // const editorId = props.editorId;
+        const quill = new Quill("#"+props.editorId , quillOptions);
+        console.log(`quill: ${props.editorId} created`);
     })
     
     function submit() {
@@ -61,6 +75,7 @@
             isRunning.value = false;
         }, 2000)
     }
+
 
 </script>
 

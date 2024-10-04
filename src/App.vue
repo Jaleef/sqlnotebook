@@ -1,9 +1,7 @@
 <template>
   <div class="container">
     <h1>Hello Vue 3 + TypeScript + Vite</h1>
-    <div v-for="(code, index) in codeBoxList" :key="index">
-      <CodeBox :addCode="addCode" :addMarkdown="addMarkdown"/>
-    </div>
+    <CodeBox v-for="(elem, index) in codeBoxList" :key="index" :editorId="elem.no" :addCode="addCode" :addMarkdown="addMarkdown"/>
   </div>
 </template>
 
@@ -11,10 +9,17 @@
   import CodeBox from './components/CodeBox.vue'
   import { ref } from 'vue'
 
-  let codeBoxList = ref([{}])
+  let codeBoxList = ref([{
+    no: 'editor'
+  }])
   function addCode() {
     console.log('add code');
-    codeBoxList.value.push({});
+
+    let now: string = String.fromCharCode((new Date()).getTime());
+    
+    codeBoxList.value.push({
+      no: now,
+    });
   }
 
   function addMarkdown() {
