@@ -53,19 +53,15 @@ const props = defineProps(["editorId", "addCode", "addMarkdown"]);
 let order = ref(1);
 let isRunning = ref(false);
 
-const quillOptions = {
-  theme: "snow",
-  modules: {
-    toolbar: false,
-  },
-};
 
-console.log("#" + props.editorId);
-
-console.log(typeof props.editorId);
 onMounted(() => {
   // const editorId = props.editorId;
-  const quill = new Quill("#" + props.editorId, quillOptions);
+  const quill = new Quill("#" + props.editorId, {
+    theme: "snow",
+    modules: {
+      toolbar: false,
+    },
+  });
   console.log(`quill: ${props.editorId} created`);
 });
 
