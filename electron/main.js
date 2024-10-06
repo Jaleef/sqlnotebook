@@ -11,7 +11,9 @@ const createWindow = () => {
     // 配置渲染进程的环境选项
     webPreferences: {
       // 预加载脚本的路径, 先是join这个electron的目录, 然后join这个preload.js
-      preload: path.join(path.join(__dirname, "electron"), "preload.js"),
+      preload: path.join(__dirname, "electron",  "preload.js"),
+
+      nodeIntegration: true,
     },
   });
 
@@ -19,6 +21,7 @@ const createWindow = () => {
   // win.loadFile('./electron/index.html');
 
   win.loadURL("http://localhost:3001");
+  win.webContents.openDevTools();
 };
 
 // 监听app的ready事件
